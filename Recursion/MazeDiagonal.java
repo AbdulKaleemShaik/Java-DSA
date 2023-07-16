@@ -5,7 +5,7 @@ public class MazeDiagonal {
        System.out.println( Maze("", 3, 3));
     }
     static ArrayList<String> Maze(String p,int r,int c){
-        if(r==1 && c==1){
+        if(r==1 && c==2){
           ArrayList<String> sr=new ArrayList<>();
           sr.add(p);
             return sr;

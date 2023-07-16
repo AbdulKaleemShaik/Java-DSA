@@ -1,6 +1,6 @@
 public class Subsequence {
     public static void main(String[] args) {
-             subsequence("abc","");
+             subsequence("a","");
 
     }
     static void subsequence(String str,String str2){
