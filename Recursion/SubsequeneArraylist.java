@@ -2,7 +2,15 @@ import java.util.ArrayList;
 
 public class SubsequeneArraylist {
     public static void main(String[] args) {
-        System.out.println(subsequence("abc",""));
+        String s="ac";
+   ArrayList<String> ans=subsequence("abc","");
+   for (int i = 0; i < ans.size(); i++) {
+    if(s.equals(ans.get(i))){
+        System.out.println(true);
+    }
+   
+    
+   }
     }
     static ArrayList<String> subsequence(String str, String str2) {
         if (str.isEmpty()) {
