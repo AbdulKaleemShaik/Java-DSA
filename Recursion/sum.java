@@ -1,6 +1,6 @@
 public class sum {
     public static void main(String[] args) {
-        System.out.println(sum(1234));
+        System.out.println(sum(152));
     }
     static int sum(int n){
         if(n/10==n){
@@ -8,4 +8,5 @@ public class sum {
         }
         return n%10+sum(n/10);
     }
+    
 }
