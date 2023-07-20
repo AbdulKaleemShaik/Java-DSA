@@ -1,18 +1,19 @@
-public class ArmStrong {
-    public static void main(String[] args) {
-        int n=153;
-        int ans=Armstrong(n);
-        if(n==ans){
-            System.out.println("Armstrong Number");
+class Solution {
+    public static  String convertToTitle(int n) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        while(n > 0){
+            int rem = (n-1)%26;
+            sb.append((char)('A' + rem));
+            n = (n-1)/26;
         }
-        else{
-            System.out.println("Not a armstrong Number");
-        }
+        
+        sb.reverse();
+        return sb.toString();
     }
-    static int Armstrong(int n){
-        if(n/10==n){
-            return n;
-        }
-        return (n%10)*(n%10)*(n%10) + Armstrong(n/10);
+    public static void main(String[] args) {
+        System.out.println(convertToTitle(701));
+
     }
 }
