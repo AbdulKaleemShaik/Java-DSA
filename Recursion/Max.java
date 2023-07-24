@@ -1,6 +1,6 @@
 public class Max {
     public static void main(String[] args) {
-        int[] arr = { 9, 1, 0, 8, 3, 4, 5, 6, 7, 11 };
+        int[] arr = { 9, 1, 0, 8, 3, 4,78, 5, 6, 7,-1, 11 };
         Max(arr, arr.length - 1, 0);
         Min(arr,arr.length-1,arr[0]);
     }
