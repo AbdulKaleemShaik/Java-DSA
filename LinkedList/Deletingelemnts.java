@@ -17,22 +17,19 @@ public class Deletingelemnts {
     }
 
     public int deleteMiddle(int index) {
-        if (size <= 1) {
+        if (index < 1) {
             return deleteFirst();
         }
         if (index == size) {
             return delteLast();
         }
         Node temp = head;
-        Node pre = head.next;
         for (int i = 1; i < index; i++) {
-            pre = pre.next;
             temp = temp.next;
-
         }
-        int val = pre.value;
+        int val = temp.next.value;
 
-        temp.next = pre.next;
+        temp.next = temp.next.next;
         size--;
         return val;
 
