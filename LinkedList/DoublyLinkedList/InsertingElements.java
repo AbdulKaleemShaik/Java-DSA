@@ -1,7 +1,8 @@
-public class Node {
+class Node {
     int val;
     Node next;
     Node prev;
+
     Node(int val) {
         this.val = val;
     }
@@ -21,13 +22,16 @@ public class Node {
         System.out.println(dr.size);
     }
 }
+
 class DoublyLinkedList {
     Node head;
     Node tail;
     int size;
+
     DoublyLinkedList() {
         this.size = 0;
     }
+
     public void Insertfirst(int val) {
         Node node = new Node(val);
         node.prev = null;
@@ -41,22 +45,25 @@ class DoublyLinkedList {
         }
         size++;
     }
-    public void Insertmiddle(int val,int index){
-        Node node=new Node(val);
-        if(head==null){
+
+    public void Insertmiddle(int val, int index) {
+        Node node = new Node(val);
+        if (head == null) {
             Insertfirst(val);
             return;
         }
-         Node last = head;
-        for (int i = 1; i < index ;i++) {
-            last=last.next;
+        Node last = head;
+        for (int i = 1; i < index; i++) {
+            last = last.next;
         }
-        node.prev=last;;
-        node.next=last.next;
-        last.next.prev=node;
-        last.next=node;
-        size++;  
+        node.prev = last;
+        ;
+        node.next = last.next;
+        last.next.prev = node;
+        last.next = node;
+        size++;
     }
+
     public void InsertLastWitoutTail(int val) {
         Node node = new Node(val);
         node.next = null;
@@ -86,6 +93,7 @@ class DoublyLinkedList {
         tail = node;
         size++;
     }
+
     public void displayfromhead() {
         Node temp = head;
         while (temp != null) {
@@ -95,6 +103,7 @@ class DoublyLinkedList {
         System.out.print("END");
         System.out.println();
     }
+
     public void displayfromtail() {
         Node temp = tail;
         while (temp != null) {
