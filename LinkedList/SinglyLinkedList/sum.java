@@ -13,10 +13,10 @@ class Node {
     }
 }
 
-public class Insertingusingrecursion {
+public class sum {
     static Node head;
 
-    public void insert( int index, Node nod) {
+    public void insert(int index, Node nod) {
         Scanner sc = new Scanner(System.in);
         if (index == 5) {
             return;
@@ -28,7 +28,7 @@ public class Insertingusingrecursion {
             node.next = null;
             head = node;
             // display();
-            insert( index + 1, node);
+            insert(index + 1, node);
         } else {
             System.out.println(index + " value");
             int n = sc.nextInt();
@@ -36,7 +36,7 @@ public class Insertingusingrecursion {
             node.next = null;
             nod.next = node;
             // display();
-            insert( index + 1, node);
+            insert(index + 1, node);
         }
 
     }
@@ -51,11 +51,21 @@ public class Insertingusingrecursion {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        Insertingusingrecursion lr = new Insertingusingrecursion();
+    public static int sum(int sum) {
+        Node temp = head;
+        while (temp != null) {
+            sum = sum + temp.val;
+            temp = temp.next;
+        }
+        return sum;
+    }
 
-        lr.insert( 0, head);
-        lr.display();
+    public static void main(String[] args) {
+        sum lr = new sum();
+
+        lr.insert(0, head);
+      //  lr.display();
+        System.out.println(sum(0));
     }
 
 }
