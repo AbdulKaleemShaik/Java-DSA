@@ -77,10 +77,10 @@ class Node {
         list.insertFirst(89);
         list.insertFirst(45);
         list.insertFirst(23);
-        list.insertLast(34);
-        list.insertLast(67);
-        list.insertLast(90);
-        list.insertmiddle(95, 3);
+        // list.insertLast(34);
+        // list.insertLast(67);
+        // list.insertLast(90);
+        // list.insertmiddle(95, 3);
         list.display();
     }
 }
