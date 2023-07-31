@@ -13,7 +13,7 @@ class Node {
     }
 }
 
-public class Insertingusingrecursion {
+public class ReversingLinkedList {
     static Node head;
 
     public void insert(int index, Node nod) {
@@ -21,14 +21,12 @@ public class Insertingusingrecursion {
         if (index == 5) {
             return;
         }
-
         if (head == null) {
             System.out.println(index + " value");
             int n = sc.nextInt();
             Node node = new Node(n);
             node.next = null;
             head = node;
-            // display();
             insert(index + 1, node);
         } else {
             System.out.println(index + " value");
@@ -36,22 +34,36 @@ public class Insertingusingrecursion {
             Node node = new Node(n);
             node.next = null;
             nod.next = node;
-            // display();
             insert(index + 1, node);
         }
 
     }
 
-    public static void reversee(Node curr, Node tempp) {
-        if (tempp.next == null) {
-            head = tempp;
+    public void Reverse(Node head) {
+        Node temp = head;
+        while (temp.next != null) {
+            temp = temp.next;
         }
-        if (tempp.next != null) {
-            reversee(tempp, tempp.next);
+    }
+
+    public static void reversing(Node temp) {
+        temp = head;
+        Node f=head;
+        int count=0;
+        while (temp != null) {
+            System.out.println(temp.val);
+            ++count;
+            temp=temp.next;
+        }
+        for (int i = 0; i < count; i++) {
+            temp.next=f;
+            temp=head;
+            
+            
         }
 
-        tempp.next = curr;
-        curr.next = null;
+
+       // temp.next.next = temp;
 
     }
 
@@ -66,12 +78,12 @@ public class Insertingusingrecursion {
     }
 
     public static void main(String[] args) {
-        Insertingusingrecursion lr = new Insertingusingrecursion();
+        ReversingLinkedList lr = new ReversingLinkedList();
 
         lr.insert(0, head);
-        lr.display();
-        lr.reversee(head, head.next);
-        lr.display();
+         lr.display();
+        lr.reversing(head);
+        
     }
 
 }
