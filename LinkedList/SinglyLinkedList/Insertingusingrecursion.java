@@ -54,6 +54,18 @@ public class Insertingusingrecursion {
         curr.next = null;
 
     }
+     public static void reverseewithhead(Node curr, Node tempp) {
+        if (cur.next.next== null) {
+            head = tempp;
+        }
+        if (tempp.next != null) {
+            reversee(tempp, tempp.next);
+        }
+
+        tempp.next = curr;
+        curr.next = null;
+
+    }
 
     public static void display() {
         Node temp = head;
