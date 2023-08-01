@@ -18,7 +18,7 @@ public class Insertingusingrecursion {
 
     public void insert(int index, Node nod) {
         Scanner sc = new Scanner(System.in);
-        if (index == 5) {
+        if (index == 7) {
             return;
         }
 
@@ -42,6 +42,20 @@ public class Insertingusingrecursion {
 
     }
 
+    public static Node removeElements(Node head, int val) {
+
+        Node temp = head;
+        while (temp != null && temp.next != null) {
+            if (temp.val == val) {
+                head = temp.next;
+            } else if (temp.next.val == val) {
+                temp.next = temp.next.next;
+            }
+            temp = temp.next;
+        }
+        return head;
+    }
+
     public static void reversee(Node curr, Node tempp) {
         if (tempp.next == null) {
             head = tempp;
@@ -54,17 +68,19 @@ public class Insertingusingrecursion {
         curr.next = null;
 
     }
-     public static void reverseewithhead(Node curr, Node tempp) {
-        if (cur.next.next== null) {
-            head = tempp;
+
+    public static Node reverseewithhead(Node curr) {
+
+        if (curr.next.next == null) {
+            head = curr.next;
         }
-        if (tempp.next != null) {
-            reversee(tempp, tempp.next);
+        if (curr.next.next != null) {
+            reverseewithhead(curr.next);
         }
 
-        tempp.next = curr;
+        curr.next.next = curr;
         curr.next = null;
-
+        return head;
     }
 
     public static void display() {
@@ -81,8 +97,10 @@ public class Insertingusingrecursion {
         Insertingusingrecursion lr = new Insertingusingrecursion();
 
         lr.insert(0, head);
-        lr.display();
-        lr.reversee(head, head.next);
+        // lr.display();
+        // lr.reversee(head, head.next);
+      //  lr.reverseewithhead(head);
+      lr.removeElements(head, 6);
         lr.display();
     }
 
