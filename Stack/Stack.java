@@ -1,14 +1,14 @@
-public class stack {
+public class Stack {
     int[] arr;
 
     private static final int SIZE = 10;
     private static int top = -1;
 
-    stack(int s) {
+    Stack(int s) {
         arr = new int[s];
     }
 
-    stack() {
+    Stack() {
         this(SIZE);
     }
 
@@ -51,7 +51,7 @@ public class stack {
     }
 
     public static void main(String[] args) {
-        stack sr = new stack();
+        Stack sr = new Stack();
         sr.push(23);
         sr.push(45);
         sr.push(55);
