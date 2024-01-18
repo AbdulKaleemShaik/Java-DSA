@@ -25,7 +25,7 @@ public class Stack {
             System.out.println("Stack is empty");
         }
         System.out.println(arr[top--]);
-        top--;
+    
 
     }
 
