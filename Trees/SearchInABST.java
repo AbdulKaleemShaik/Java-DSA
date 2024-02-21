@@ -1,4 +1,4 @@
-public class ConstructonOfBinaryTree {
+public class SearchInABST {
     static Node root;
 
     public static Node insert(Node root, int val) {
@@ -13,16 +13,20 @@ public class ConstructonOfBinaryTree {
         }
         return root;
     }
-
-    public static void display(Node root) {
-        if (root == null) {
-            return;
+    public static  boolean Search(Node root,int val){
+        if(root==null){
+            return false;
         }
-        display(root.left);
-        System.out.print(root.val+" ");
-        display(root.right);
+        if(root.val==val){
+            return true;
+        }
+        else if(root.val>val){
+            return Search(root.left, val);
+        }
+        else{
+            return Search(root.right, val);
+        }
     }
-
     public static void main(String[] args) {
         root = new Node(12);
         insert(root, 5);
@@ -30,10 +34,10 @@ public class ConstructonOfBinaryTree {
         insert(root, 3);
         insert(root, 9);
         insert(root, 1);
-        display(root);
+        System.out.println(Search(root, 1));
     }
+    
 }
-
 class Node {
     int val;
     Node left;
