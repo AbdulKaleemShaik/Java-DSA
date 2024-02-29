@@ -1,3 +1,4 @@
+import java.util.*;
 public class DepthOfBST {
     static Node root;
 
@@ -15,6 +16,7 @@ public class DepthOfBST {
     }
 
     public static void main(String[] args) {
+        Stack<Integer> st=new Stack<>();
         int[] arr = { 1, 2, 3, 4, 5 };
         root = new Node(arr[0]);
         for (int i = 1; i < arr.length; i++) {
