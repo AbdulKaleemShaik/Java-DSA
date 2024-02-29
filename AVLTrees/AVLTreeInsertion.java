@@ -54,7 +54,7 @@ public class AVLTreeInsertion {
         root.height = Math.max(height(root.left), height(root.right)) + 1;
 
         int balance = Balance(root);
-        
+
         if (balance > 1 && height(root.left.left) - height(root.left.right) > 0) {
             return RightRotate(root);
         }
@@ -82,7 +82,7 @@ public class AVLTreeInsertion {
     }
 
     public static void main(String[] args) {
-        AVLAVl tree = new AVLAVl();
+        AVLTreeInsertion tree = new AVLTreeInsertion();
         tree.insert(10);
         tree.insert(20);
         tree.insert(30);
