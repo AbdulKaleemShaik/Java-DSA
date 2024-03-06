@@ -1,102 +1,111 @@
-public class AVLTreeInsertion {
-    static Node root;
+class Node {
+    int key, height;
+    Node left, right;
 
-    public static int height(Node root) {
-        if (root == null) {
+    Node(int d) {
+        key = d;
+        height = 1;
+    }
+}
+
+public class AVLTree {
+    Node root;
+
+    int height(Node N) {
+        if (N == null)
             return 0;
-        }
-        return root.height;
+        return N.height;
     }
 
-    public static int Balance(Node root) {
-        if (root == null) {
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    Node rightRotate(Node y) {
+        Node x = y.left;
+        Node T = x.right;
+
+        x.right = y;
+        y.left = T;
+
+        y.height = max(height(y.left), height(y.right)) + 1;
+        x.height = max(height(x.left), height(x.right)) + 1;
+
+        return x;
+    }
+
+    Node leftRotate(Node x) {
+        Node y = x.right;
+        Node T = y.left;
+
+        y.left = x;
+        x.right = T;
+
+        x.height = max(height(x.left), height(x.right)) + 1;
+        y.height = max(height(y.left), height(y.right)) + 1;
+
+        return y;
+    }
+
+    int getBalance(Node N) {
+        if (N == null)
             return 0;
-        }
-        return height(root.left) - height(root.right);
+        return height(N.left) - height(N.right);
     }
 
-    private static Node LeftRotate(Node root2) {
-        Node p = root2;
-        Node c = p.right;
-        p.right = c.left;
-        c.right = p;
-        p.height = Math.max(height(p.left), height(p.right)) + 1;
-        c.height = Math.max(height(c.left), height(c.right)) + 1;
-        return c;
+    public void ins(int val) {
+        root = insert(root, val);
     }
 
-    private static Node RightRotate(Node root2) {
-        Node p = root2;
-        Node c = root2.left;
-        p.left = c.right;
-        c.right = p;
-        p.height = Math.max(height(p.left), height(p.right)) + 1;
-        c.height = Math.max(height(c.left), height(c.right)) + 1;
+    Node insert(Node node, int key) {
+        if (node == null)
+            return new Node(key);
 
-        return c;
-    }
+        if (key < node.key)
+            node.left = insert(node.left, key);
+        else if (key >= node.key)
+            node.right = insert(node.right, key);
 
-    void insert(int key) {
-        root = insertRec(root, key);
-    }
+        node.height = 1 + max(height(node.left), height(node.right));
 
-    Node insertRec(Node root, int key) {
-        if (root == null) {
-            root = new Node(key);
-            return root;
-        }
+        int balance = getBalance(node);
 
-        if (key < root.val)
-            root.left = insertRec(root.left, key);
-        else if (key > root.val)
-            root.right = insertRec(root.right, key);
+        if (balance > 1 && height(root.left.left) - height(root.left.right) > 0)
+            return rightRotate(node);
 
-        root.height = Math.max(height(root.left), height(root.right)) + 1;
+        if (balance < -1 && height(root.right.left) - height(root.right.right) < 0)
+            return leftRotate(node);
 
-        int balance = Balance(root);
-
-        if (balance > 1 && height(root.left.left) - height(root.left.right) > 0) {
-            return RightRotate(root);
-        }
         if (balance > 1 && height(root.left.left) - height(root.left.right) < 0) {
-            root.left = LeftRotate(root.left);
-            return RightRotate(root);
-        }
-        if (balance < -1 && height(root.right.left) - height(root.right.right) < 0) {
-            return LeftRotate(root);
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
         }
         if (balance < -1 && height(root.right.left) - height(root.right.right) > 0) {
-            root.right = RightRotate(root.right);
-            return LeftRotate(root);
+            node.right = rightRotate(node.right);
+            return leftRotate(node);
         }
-        return root;
+
+        return node;
     }
 
-    public static void preOrder(Node root) {
-        if (root == null) {
-            return;
+    void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preOrder(node.left);
+            preOrder(node.right);
         }
-        preOrder(root.left);
-        preOrder(root.right);
-        System.out.print(root.val + " ");
     }
 
     public static void main(String[] args) {
-        AVLTreeInsertion tree = new AVLTreeInsertion();
-        tree.insert(10);
-        tree.insert(20);
-        tree.insert(30);
-        preOrder(root);
+        AVLTree tree = new AVLTree();
 
-    }
-
-}
-
-class Node {
-    int val, height;
-    Node left, right;
-
-    Node(int val) {
-        this.val = val;
+        tree.ins(10);
+        tree.ins(20);
+        tree.ins(30);
+        tree.ins(40);
+        tree.ins(50);
+        tree.ins(25);
+        System.out.println("Preorder traversal of constructed tree is : ");
+        tree.preOrder(tree.root);
     }
 }
