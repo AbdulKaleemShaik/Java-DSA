@@ -45,6 +45,6 @@ public class AllPaths {
         ed[0].add(new Edge(0, 2));
         ed[0].add(new Edge(0, 3));
         ed[1].add(new Edge(1, 3));
-
+       
     }
 }
